@@ -1,5 +1,7 @@
 import java.util.*;
 
+import javax.swing.plaf.basic.BasicComboBoxUI.ListDataHandler;
+
 public class ScalesSolution
 {
 	private String scasol;
@@ -13,7 +15,8 @@ public class ScalesSolution
 		for(int i=0;i<n;++i)
 		{
 			char si = s.charAt(i);
-			if (si != '0' && si != '1') ok = false;
+			if (si != '0' && si != '1') 
+				ok = false;
 		}
 		if (ok)
 		{
@@ -29,6 +32,9 @@ public class ScalesSolution
 		String s = new String();
 		//Code goes here
 		//Create a random binary string of just ones and zeros of length n
+		for (int i = 0; i < n; i++) {
+			s = s + CS2004.UI(0, 1);
+		}
 		
 		return(s);
 	}
@@ -48,7 +54,12 @@ public class ScalesSolution
 		//Code goes here
 		//Check each element of scasol for a 0 (lhs) and 1 (rhs) add the weight wi
 		//to variables lhs and rhs as appropriate
-		
+		for (int i = 0; i <n; i++) {
+			if (scasol.charAt(i) == '1') {
+				rhs += weights.get(i);
+			}else
+				lhs += weights.get(i);
+		}
 		return(Math.abs(lhs-rhs));
 	}
 	//Display the string without a new line
